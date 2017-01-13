@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sao.dao.BookMapper">
+  <resultMap id="BaseResultMap" type="com.sao.pojo.Book">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="bookPrice" jdbcType="DECIMAL" property="bookprice" />
+    <result column="bookName" jdbcType="CHAR" property="bookname" />
+    <result column="bookImg" jdbcType="CHAR" property="bookimg" />
+    <result column="bookAuthor" jdbcType="CHAR" property="bookauthor" />
+    <result column="bookBrief" jdbcType="CHAR" property="bookbrief" />
+    <result column="bookDate" jdbcType="TIMESTAMP" property="bookdate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, bookPrice, bookName, bookImg, bookAuthor, bookBrief, bookDate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from book
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from book
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sao.pojo.Book">
+    insert into book (id, bookPrice, bookName, 
+      bookImg, bookAuthor, bookBrief, 
+      bookDate)
+    values (#{id,jdbcType=INTEGER}, #{bookprice,jdbcType=DECIMAL}, #{bookname,jdbcType=CHAR}, 
+      #{bookimg,jdbcType=CHAR}, #{bookauthor,jdbcType=CHAR}, #{bookbrief,jdbcType=CHAR}, 
+      #{bookdate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sao.pojo.Book">
+    insert into book
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="bookprice != null">
+        bookPrice,
+      </if>
+      <if test="bookname != null">
+        bookName,
+      </if>
+      <if test="bookimg != null">
+        bookImg,
+      </if>
+      <if test="bookauthor != null">
+        bookAuthor,
+      </if>
+      <if test="bookbrief != null">
+        bookBrief,
+      </if>
+      <if test="bookdate != null">
+        bookDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="bookprice != null">
+        #{bookprice,jdbcType=DECIMAL},
+      </if>
+      <if test="bookname != null">
+        #{bookname,jdbcType=CHAR},
+      </if>
+      <if test="bookimg != null">
+        #{bookimg,jdbcType=CHAR},
+      </if>
+      <if test="bookauthor != null">
+        #{bookauthor,jdbcType=CHAR},
+      </if>
+      <if test="bookbrief != null">
+        #{bookbrief,jdbcType=CHAR},
+      </if>
+      <if test="bookdate != null">
+        #{bookdate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sao.pojo.Book">
+    update book
+    <set>
+      <if test="bookprice != null">
+        bookPrice = #{bookprice,jdbcType=DECIMAL},
+      </if>
+      <if test="bookname != null">
+        bookName = #{bookname,jdbcType=CHAR},
+      </if>
+      <if test="bookimg != null">
+        bookImg = #{bookimg,jdbcType=CHAR},
+      </if>
+      <if test="bookauthor != null">
+        bookAuthor = #{bookauthor,jdbcType=CHAR},
+      </if>
+      <if test="bookbrief != null">
+        bookBrief = #{bookbrief,jdbcType=CHAR},
+      </if>
+      <if test="bookdate != null">
+        bookDate = #{bookdate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sao.pojo.Book">
+    update book
+    set bookPrice = #{bookprice,jdbcType=DECIMAL},
+      bookName = #{bookname,jdbcType=CHAR},
+      bookImg = #{bookimg,jdbcType=CHAR},
+      bookAuthor = #{bookauthor,jdbcType=CHAR},
+      bookBrief = #{bookbrief,jdbcType=CHAR},
+      bookDate = #{bookdate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

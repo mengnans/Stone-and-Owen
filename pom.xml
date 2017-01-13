@@ -1,21 +1,25 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.stone-and-owen</groupId>
-	<artifactId>MyBook</artifactId>
+	<groupId>com.sao</groupId>
+	<artifactId>book</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>insect-web Maven Webapp</name>
+	<name>book</name>
 	<url>http://maven.apache.org</url>
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<spring.version>4.2.5.RELEASE</spring.version>
-		<jackson.version>2.5.0</jackson.version>
-	</properties>
-	<dependencies>
 	
-
-		  <dependency>  
+	
+	<properties>  
+        <!-- spring版本号 -->  
+        <spring.version>4.0.2.RELEASE</spring.version>  
+        <!-- mybatis版本号 -->  
+        <mybatis.version>3.2.6</mybatis.version>  
+        <!-- log4j日志文件管理包版本 -->  
+        <slf4j.version>1.7.7</slf4j.version>  
+        <log4j.version>1.2.17</log4j.version>  
+    </properties>  
+	 <dependencies>  
+        <dependency>  
             <groupId>junit</groupId>  
             <artifactId>junit</artifactId>  
             <version>4.11</version>  
@@ -77,10 +81,8 @@
         <dependency>  
             <groupId>org.mybatis</groupId>  
             <artifactId>mybatis</artifactId>  
-            <version>3.2.8</version>  
+            <version>${mybatis.version}</version>  
         </dependency>  
-        
-		
         <!-- mybatis/spring包 -->  
         <dependency>  
             <groupId>org.mybatis</groupId>  
@@ -116,7 +118,7 @@
         <dependency>  
             <groupId>log4j</groupId>  
             <artifactId>log4j</artifactId>  
-            <version>1.2.17</version>  
+            <version>${log4j.version}</version>  
         </dependency>  
           
           
@@ -131,13 +133,13 @@
         <dependency>  
             <groupId>org.slf4j</groupId>  
             <artifactId>slf4j-api</artifactId>  
-            <version>1.7.5</version>  
+            <version>${slf4j.version}</version>  
         </dependency>  
   
         <dependency>  
             <groupId>org.slf4j</groupId>  
             <artifactId>slf4j-log4j12</artifactId>  
-            <version>1.7.2</version>  
+            <version>${slf4j.version}</version>  
         </dependency>  
         <!-- log end -->  
         <!-- 映入JSON -->  
@@ -162,12 +164,12 @@
             <artifactId>commons-codec</artifactId>  
             <version>1.9</version>  
         </dependency>  
-
-
-	</dependencies>
+          
+          
+    </dependencies>  
 
 	<build>
-		<finalName>insect-web</finalName>
+		<finalName>book</finalName>
 		<plugins>
 			<!-- Run the JUnit unit tests in an isolated classloader -->
 			<plugin>
