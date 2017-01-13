@@ -1,6 +1,6 @@
 package com.sao.pojo;
 
-public class BUser {
+public class User_t {
     private Integer id;
 
     private String userName;

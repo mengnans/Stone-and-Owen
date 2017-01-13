@@ -7,19 +7,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.sao.pojo.User;
-import com.sao.service.IUserService;  
+import com.sao.pojo.User_t;
+import com.sao.service.IUser_tService;  
   
 @Controller  
-@RequestMapping("/user")  
-public class UserController {  
+@RequestMapping("/user_t")  
+public class User_tController {  
     @Resource  
-    private IUserService userService;  
+    private IUser_tService userService;  
       
-    @RequestMapping("/showUser")  
+    @RequestMapping("/showUser_t")  
     public String toIndex(HttpServletRequest request,Model model){  
         int userId = Integer.parseInt(request.getParameter("id"));  
-        User user = this.userService.getUserById(userId);  
+        User_t user = this.userService.getUserById(userId);  
         model.addAttribute("user", user);  
         return "showUser";  
     }  
