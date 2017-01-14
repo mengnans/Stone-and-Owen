@@ -16,11 +16,13 @@ public class UserController {
 	@Resource
 	private IUserService userService;
 
-	@RequestMapping("/*")
+	@RequestMapping("/login")
 	public String getUser(HttpServletRequest request, Model model) {
-		int userId = Integer.parseInt(request.getParameter("id"));
-		User user = this.userService.getUserById(userId);
-		model.addAttribute("user", user);
+//		String userEmail = request.getParameter("inputEmail");
+//		String userPassword = request.getParameter("inputPassword");
+//		User user = this.userService.getUserById(userId)
+//		User user = this.userService.getUserById(userId);
+//		model.addAttribute("user", user);
 		return "login";
 	}
 }
