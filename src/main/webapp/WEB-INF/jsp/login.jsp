@@ -52,7 +52,7 @@
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
 				in</button>
 		</form>
-		<label>${error.errorMsg}</label>
+		<h4 class="form-signin-heading" align="center">${error.errorMsg}</h4>
 	</div>
 	<!-- /container -->
 
