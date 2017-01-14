@@ -2,7 +2,7 @@ package com.sao.error;
 
 public class MyError {
 	
-	private String errorMsg;
+	public String errorMsg;
 
 	public String getErrorMsg() {
 		return errorMsg;

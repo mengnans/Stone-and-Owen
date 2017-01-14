@@ -18,8 +18,13 @@ public class UserController {
 	@Resource
 	private IUserService userService;
 
+	@RequestMapping("/tologin")
+	public String toLogin(HttpServletRequest request, Model model) {
+		return "login";
+	}
+	
 	@RequestMapping("/login")
-	public String getUser(HttpServletRequest request, Model model) {
+	public String login(HttpServletRequest request, Model model) {
 		String inputEmail = request.getParameter("inputEmail");
 		String inputPassword = request.getParameter("inputPassword");
 		User user = this.userService.getUserByEmail(inputEmail);
@@ -32,22 +37,17 @@ public class UserController {
 			}
 			
 			if(flag){
-				model.addAttribute(user);
+				model.addAttribute("user",user);
 				return "main";
-			}else{
-				MyError error = new MyError();
-				error.setErrorMsg("Wrong password!");
-				model.addAttribute(error);
-				return "login";
 			}
 		}
 		MyError error = new MyError();
-		error.setErrorMsg("Wrong password!");
-		model.addAttribute(error);
+		error.setErrorMsg("Wrong email or password!");
+		model.addAttribute("error",error);
 		return "login";
 	}
 	
 	private boolean matchPassword(String inputPassword, String md5Password) throws Exception{
-		return Util.getMD5Str(inputPassword) == md5Password;
+		return md5Password.equals(Util.getMD5Str(inputPassword));
 	}
 }
