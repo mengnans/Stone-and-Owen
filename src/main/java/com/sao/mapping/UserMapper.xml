@@ -22,9 +22,8 @@
 		where id = #{id,jdbcType=INTEGER}
 	</delete>
 	<insert id="insert" parameterType="com.sao.pojo.User">
-		insert into user (id, userName, userPassword,
-		userEmail)
-		values (#{id,jdbcType=INTEGER}, #{username,jdbcType=CHAR},
+		insert into user (userName, userPassword, userEmail)
+		values (#{username,jdbcType=CHAR},
 		#{userpassword,jdbcType=CHAR},
 		#{useremail,jdbcType=CHAR})
 	</insert>
@@ -88,6 +87,13 @@
 		<include refid="Base_Column_List" />
 		from user
 		where userEmail = #{userEmail,jdbcType= CHAR}
+	</select>
+	<select id="selectByUserName" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from user
+		where userName = #{userName,jdbcType= CHAR}
 	</select>
 	
 </mapper>

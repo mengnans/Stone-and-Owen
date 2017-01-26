@@ -17,5 +17,13 @@ public class UserServiceImpl implements IUserService{
 	public User getUserByEmail(String userEmail) {
 		return this.userDao.selectByUserEmail(userEmail);
 	}
+	
+	public void newUser(User record) {
+		this.userDao.insert(record);
+	}
+	
+	public User getUserByName(String userName) {
+		return this.userDao.selectByUserName(userName);
+	}
 
 }
